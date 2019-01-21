@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>AE2WEB-svga | 牙膏 | Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="">
+    
+    <meta name="description" content="在实践过bodymovin之后，发现如果需要在动画里面加逻辑比较麻烦，效果也不好。因此后面找到了另外一个开源的工具，就是YY开源出来的svga,有android，ios，web版本，还有对应的AE插件，用法请看官方文档  之所以选择svga：  比较强大的api； 据说性能比bodymovin好（不敢下定论，因为按照目前接触过bodymovin跟svga的情况来看，感觉如果只是纯播放，bodym">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AE2WEB-svga">
+<meta property="og:url" content="https://hanyitim.github.io/2019/01/21/AE2WEB-svga/index.html">
+<meta property="og:site_name" content="牙膏 | Blog">
+<meta property="og:description" content="在实践过bodymovin之后，发现如果需要在动画里面加逻辑比较麻烦，效果也不好。因此后面找到了另外一个开源的工具，就是YY开源出来的svga,有android，ios，web版本，还有对应的AE插件，用法请看官方文档  之所以选择svga：  比较强大的api； 据说性能比bodymovin好（不敢下定论，因为按照目前接触过bodymovin跟svga的情况来看，感觉如果只是纯播放，bodym">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hanyitim.github.io/2019/01/21/AE2WEB-svga/animation-4.gif">
+<meta property="og:updated_time" content="2019-01-21T08:38:40.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AE2WEB-svga">
+<meta name="twitter:description" content="在实践过bodymovin之后，发现如果需要在动画里面加逻辑比较麻烦，效果也不好。因此后面找到了另外一个开源的工具，就是YY开源出来的svga,有android，ios，web版本，还有对应的AE插件，用法请看官方文档  之所以选择svga：  比较强大的api； 据说性能比bodymovin好（不敢下定论，因为按照目前接触过bodymovin跟svga的情况来看，感觉如果只是纯播放，bodym">
+<meta name="twitter:image" content="https://hanyitim.github.io/2019/01/21/AE2WEB-svga/animation-4.gif">
+    
+
+    
+        <link rel="alternate" href="/" title="牙膏 | Blog" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">À propos</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Rechercher">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-AE2WEB-svga" class="article article-single article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        AE2WEB-svga
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/01/21/AE2WEB-svga/" class="article-date">
+            <time datetime="2019-01-21T08:31:57.000Z" itemprop="datePublished">2019-01-21</time>
+        </a>
+    </div>
+
+		
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>在实践过bodymovin之后，发现如果需要在动画里面加逻辑比较麻烦，效果也不好。因此后面找到了另外一个开源的工具，就是YY开源出来的<a href="https://github.com/yyued/SVGAPlayer-Web" target="_blank" rel="noopener">svga</a>,有android，ios，web版本，还有对应的AE插件，用法请看官方文档</p>
+</blockquote>
+<p>之所以选择svga：</p>
+<ol>
+<li>比较强大的api；</li>
+<li>据说性能比bodymovin好（不敢下定论，因为按照目前接触过bodymovin跟svga的情况来看，感觉如果只是纯播放，bodymovin的性能会流畅一点，当然，这个跟我的应用场景有关系，一个比较蛋疼的原因，就是需要在本地播放。意味着动画资源不能通过ajax获取）；</li>
+</ol>
+<p>问题：因为需要本地播放，所以Parse.load传的是svga文件转成base64之后的字符串，load会多了一步readBlobAsArrayBuffer的过程，这个很耗浏览器性能。</p>
+<h5 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h5><ul>
+<li><a href="https://github.com/yyued/SVGA-AEConverter" target="_blank" rel="noopener">SVGA-AEConverter</a>(AE动画导出svga插件)</li>
+<li><a href="https://github.com/yyued/SVGAPlayer-Android" target="_blank" rel="noopener">SVGAPlayer-Android</a>(android播放器)</li>
+<li><a href="https://github.com/yyued/SVGAPlayer-Web" target="_blank" rel="noopener">SVGAPlayer-Web</a>(web播放器，本次要实践的库)</li>
+<li><a href="https://github.com/yyued/SVGAPlayer-iOS" target="_blank" rel="noopener">SVGAPlayer-iOS</a>(ios播放器)</li>
+</ul>
+<h5 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h5><ul>
+<li>setImage(url,imagekey)</li>
+<li>setText(text || option,imagekey)</li>
+<li>startAnimationWithRangeList(自己添加的一个方法，指定区间帧动画，对区间动画进行拼接，全部执行完才调用 onfinish)</li>
+</ul>
+<h5 id="简述用法"><a href="#简述用法" class="headerlink" title="简述用法"></a>简述用法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//安装svga</span><br><span class="line">//script</span><br><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/svgaplayerweb@2.1.0/build/svga.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">//npm</span><br><span class="line">npm install svgaplayerweb --save</span><br><span class="line">添加 require(&apos;svgaplayerweb&apos;) 至 xxx.js</span><br><span class="line"></span><br><span class="line">//使用</span><br><span class="line">//自动加载(基于dom）</span><br><span class="line">&lt;div src=&quot;rose_2.0.0.svga&quot; loops=&quot;0&quot; clearsAfterStop=&quot;true&quot; style=&quot;styles...&quot;&gt;&lt;/div&gt;</span><br><span class="line">这里其实是跑一个autoplayer的一个方法，通过解析dom的一些信息，自动去做播放（基本没用过，因为，基本用到这个东西，都有一下逻辑在里面）</span><br><span class="line"></span><br><span class="line">//手动加载（通过svgaPlayer的一些方法去播放）</span><br><span class="line">1.添加容器</span><br><span class="line">&lt;div id=&quot;demoCanvas&quot; style=&quot;styles...&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">2.加载动画</span><br><span class="line">var player = new SVGA.Player(&apos;#demoCanvas&apos;);</span><br><span class="line">var parser = new SVGA.Parser(&apos;#demoCanvas&apos;); // 如果你需要支持 IE6+，那么必须把同样的选择器传给 Parser。</span><br><span class="line">parser.load(&apos;rose_2.0.0.svga&apos;, function(videoItem) &#123;</span><br><span class="line">    player.setVideoItem(videoItem);</span><br><span class="line">    player.startAnimation();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="需要注意的地方"><a href="#需要注意的地方" class="headerlink" title="需要注意的地方"></a>需要注意的地方</h5><ol>
+<li>android 4.x 需要导入blob，以及 jszip库。</li>
+<li>目前官方的库，提供的适配属性在iphone上有点问题。<h5 id="svga动画信息"><a href="#svga动画信息" class="headerlink" title="svga动画信息"></a>svga动画信息</h5>设计通过AE+svga插件，导出一个动画的svga格式的一个二进制文件，虽然看不到里面的内容，但是把他扔到<a href="http://svga.io/svga-preview.html" target="_blank" rel="noopener">svga预览</a>，是可以看到svga文件的一些信息的（转换之后）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">svga基本信息</span><br><span class="line">&#123;</span><br><span class="line">  &quot;version&quot;: &quot;2.0&quot;,</span><br><span class="line">  &quot;FPS&quot;: 30,</span><br><span class="line">  &quot;frames&quot;: 110,</span><br><span class="line">  &quot;videoSize&quot;: &#123;</span><br><span class="line">    &quot;width&quot;: 750,</span><br><span class="line">    &quot;height&quot;: 750</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//素材信息</span><br><span class="line">A --- &#123;&quot;width&quot;:600,&quot;height&quot;:493&#125;</span><br><span class="line">Aleft --- &#123;&quot;width&quot;:82,&quot;height&quot;:67&#125;</span><br><span class="line">Aright --- &#123;&quot;width&quot;:82,&quot;height&quot;:67&#125;</span><br><span class="line">Avatar --- &#123;&quot;width&quot;:72,&quot;height&quot;:72&#125;</span><br><span class="line">BG --- &#123;&quot;width&quot;:750,&quot;height&quot;:750&#125;</span><br><span class="line">Bleft --- &#123;&quot;width&quot;:120,&quot;height&quot;:97&#125;</span><br><span class="line">Bright --- &#123;&quot;width&quot;:120,&quot;height&quot;:97&#125;</span><br><span class="line">Planet --- &#123;&quot;width&quot;:80,&quot;height&quot;:60&#125;</span><br><span class="line">flower --- &#123;&quot;width&quot;:63,&quot;height&quot;:26&#125;</span><br><span class="line">hole --- &#123;&quot;width&quot;:113,&quot;height&quot;:109&#125;</span><br><span class="line">img_491 --- &#123;&quot;width&quot;:38,&quot;height&quot;:38&#125;</span><br><span class="line">medal --- &#123;&quot;width&quot;:376,&quot;height&quot;:415&#125;</span><br><span class="line">medal-bling-l --- &#123;&quot;width&quot;:66,&quot;height&quot;:66&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当然，文件里面的信息肯定不只包含上面的信息，看svga-web的源码，里面的reader那一部分的逻辑，应该是有包含具体到哪一帧用canvas绘制上面样的内容的一些信息（这个好像是废话）。</p>
+<h5 id="需求：宝箱1-0"><a href="#需求：宝箱1-0" class="headerlink" title="需求：宝箱1.0"></a>需求：宝箱1.0</h5><p>设计大佬会给一个宝箱的svga，这边需要做的就是通过设计大佬给一个imagekey+svga的setImage去设置宝箱开处理的礼物图片。</p>
+<h5 id="动画gif如下："><a href="#动画gif如下：" class="headerlink" title="动画gif如下："></a>动画gif如下：</h5><p><img src="/2019/01/21/AE2WEB-svga/animation-4.gif" alt="image"></p>
+<h5 id="部分代码如下："><a href="#部分代码如下：" class="headerlink" title="部分代码如下："></a>部分代码如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">var parser = new svgaplayerweb.Parser(&apos;#canvas&apos;)</span><br><span class="line">var player = new svgaplayerweb.Player(&apos;#canvas&apos;)</span><br><span class="line"></span><br><span class="line">//之所以用这个方法去做适配是因为官方的库设置fillMode属性有在ios7p/8p 上面有bug，那时候没去提issuse，不知道现在修复了没</span><br><span class="line">function setFill()&#123;</span><br><span class="line">    var $_canvas = document.getElementById(&apos;canvas&apos;),</span><br><span class="line">        w = window.innerWidth,</span><br><span class="line">        h = window.innerHeight,</span><br><span class="line">        screen_proportion = h/w,</span><br><span class="line">        svga_proportion = 16/9;</span><br><span class="line">    if(screen_proportion &gt; svga_proportion)&#123;//长屏幕</span><br><span class="line">        $_canvas.style.width = h/svga_proportion+&apos;px&apos;;</span><br><span class="line">        $_canvas.style.left = (w-h/svga_proportion)/2+&apos;px&apos;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        $_canvas.style.height = w*svga_proportion+&apos;px&apos;;</span><br><span class="line">        $_canvas.style.top = (h-w*svga_proportion)/2+&apos;px&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//初始化</span><br><span class="line">function svgaInitial(giftSrc)&#123;</span><br><span class="line">    // svga ready</span><br><span class="line">    parser.load(svgabase64,function(videoItem)&#123;</span><br><span class="line">        //设置宝箱开出的礼物图片</span><br><span class="line">        player.setImage(giftSrc, &apos;gift&apos;)</span><br><span class="line">        player.loops = 1;</span><br><span class="line">        player.setVideoItem(videoItem);</span><br><span class="line">        player.onFinished(function()&#123;</span><br><span class="line">            //播放结束后触发离开逻辑</span><br><span class="line">            leave();</span><br><span class="line">        &#125;)</span><br><span class="line">        enter();</span><br><span class="line">    &#125;,function(err)&#123;</span><br><span class="line">        // alert(err.message);</span><br><span class="line">        //报错直接触发离开逻辑</span><br><span class="line">        leave();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="需求：宝箱1-1"><a href="#需求：宝箱1-1" class="headerlink" title="需求：宝箱1.1"></a>需求：宝箱1.1</h5><p>宝箱部分礼物需要开出图片，一部分需要开出特效，这个时候就比较为难，最后决定的解决方案是在宝箱里面放置了好几段特效，分别是：宝箱打开+普通礼物（1.0）+宝箱打开+大礼物特效*N（这样导致了一个特效包最大的差不多2M）</p>
+<h5 id="动画gif如下：-1"><a href="#动画gif如下：-1" class="headerlink" title="动画gif如下："></a>动画gif如下：</h5><p><img src="/2019/01/21/AE2WEB-svga/animation-4.gif" alt="image"></p>
+<p><img src="/2019/01/21/AE2WEB-svga/animation-5.gif" alt="image"></p>
+<h5 id="部分代码如下：-1"><a href="#部分代码如下：-1" class="headerlink" title="部分代码如下："></a>部分代码如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//相对于1.0的版本，1.1的版本多了好几个svga文件，多了以下判断逻辑，通过参数去觉得播放哪一个svga</span><br><span class="line">if(giftId == 7)&#123;</span><br><span class="line">    svgabase64 = box_JL;</span><br><span class="line">&#125;</span><br><span class="line">else if(giftId == 8)&#123;</span><br><span class="line">    svgabase64 = box_HD;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">else if(giftId == 9)&#123;</span><br><span class="line">    svgabase64 = box_CS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问题：虽然只load一份base64，不过几个base64文件打包到一个js里面去，会导致js的体积很大</span><br></pre></td></tr></table></figure>
+<h5 id="需求：宝箱1-2"><a href="#需求：宝箱1-2" class="headerlink" title="需求：宝箱1.2"></a>需求：宝箱1.2</h5><p>宝箱需要开出的礼物有不同的类别（最大五种）+不同的数量，如果这个效果按照1.1的形式去做的话，得需要有五段不一样的svga，那么整个特效包的大小肯定会超过2M。在去看文档的时候，发现了startAnimationWithRange这个方法，播放svga动画的某一个区间的动画，但还是满足不了，无奈之下fork一下仓库，自己实现一些功能</p>
+<ol>
+<li>多段拼接播放（startAnimationWithRangeDouble）</li>
+<li>特殊字体，字体颜色渐变，阴影的支持</li>
+</ol>
+<h5 id="动画gif如下：-2"><a href="#动画gif如下：-2" class="headerlink" title="动画gif如下："></a>动画gif如下：</h5><p><img src="/2019/01/21/AE2WEB-svga/animation-1.gif" alt="image"></p>
+<p><img src="/2019/01/21/AE2WEB-svga/animation-2.gif" alt="image"></p>
+<p><img src="/2019/01/21/AE2WEB-svga/animation-3.gif" alt="image"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">player.setText(&#123;</span><br><span class="line">    text:form,</span><br><span class="line">    size:form &gt; 99 ? &quot;160px&quot; :&quot;200px&quot;,</span><br><span class="line">    color:&quot;linear-gradient(to right, #e1d7b4, #bfae7d)&quot;,</span><br><span class="line">    family:&quot;Impact&quot;,</span><br><span class="line">    offset:&#123;</span><br><span class="line">        x:0,</span><br><span class="line">        y:-10</span><br><span class="line">    &#125;,</span><br><span class="line">    textShadow:&#123;</span><br><span class="line">        color:&apos;rgba(0, 0, 0, 0.01)&apos;,</span><br><span class="line">        offsetX:0,</span><br><span class="line">        offsetY:3,</span><br><span class="line">        blur:3</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,&quot;numberone&quot;);</span><br></pre></td></tr></table></figure></p>
+<h5 id="动画gif如下：-3"><a href="#动画gif如下：-3" class="headerlink" title="动画gif如下："></a>动画gif如下：</h5><h5 id="部分代码如下：-2"><a href="#部分代码如下：-2" class="headerlink" title="部分代码如下："></a>部分代码如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">function svgaInitial()&#123;</span><br><span class="line">    var len = gift.length;</span><br><span class="line">    var releaseGift = function(data,len)&#123;</span><br><span class="line">        data.forEach((item,index) =&gt; &#123;</span><br><span class="line">            player.setImage(item.src,`gift-$&#123;len == 1 ? &quot;&quot; : len+&quot;-&quot;&#125;$&#123;index+1&#125;`);</span><br><span class="line">            player.setText(&#123;</span><br><span class="line">                text:`X$&#123;item.count&#125;`,</span><br><span class="line">                size:item.count&gt;999 ? &quot;40px&quot;:&quot;54px&quot;,</span><br><span class="line">                family:&quot;BaiZhouRenZhe&quot;,</span><br><span class="line">                color: &quot;#FFF2C8&quot;,</span><br><span class="line">                offset: &#123;x: 0, y: 0&#125;</span><br><span class="line">            &#125;,`gift-count-$&#123;len == 1 ? &quot;&quot; : len+&quot;-&quot;&#125;$&#123;index+1&#125;`)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    // svga ready</span><br><span class="line">    parser.load(svgabase64,function(videoItem)&#123;</span><br><span class="line">        player.loops = 1;</span><br><span class="line">        releaseGift(gift,giftLen);</span><br><span class="line">        player.setVideoItem(videoItem);</span><br><span class="line">        player.onFinished(function()&#123;</span><br><span class="line">            leave();</span><br><span class="line">        &#125;)</span><br><span class="line">        if(len &gt; 0)&#123;</span><br><span class="line">            enter();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,function(err)&#123;</span><br><span class="line">        leave();</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function enter() &#123;</span><br><span class="line">    var releaseSvga = function(gift,len)&#123;</span><br><span class="line">        switch(len)&#123;</span><br><span class="line">            case 1:</span><br><span class="line">                player.startAnimationWithRange(&#123;location:0,length:200&#125;);</span><br><span class="line">            break;</span><br><span class="line">            case 2:</span><br><span class="line">                player.startAnimationWithRangeDouble([&#123;location:0,length:150&#125;,&#123;location:200,length:50&#125;]);</span><br><span class="line">            break;</span><br><span class="line">            case 3:</span><br><span class="line">                player.startAnimationWithRangeDouble([&#123;location:0,length:150&#125;,&#123;location:250,length:50&#125;]);</span><br><span class="line">            break;</span><br><span class="line">            case 4:</span><br><span class="line">                player.startAnimationWithRangeDouble([&#123;location:0,length:150&#125;,&#123;location:300,length:50&#125;]);</span><br><span class="line">            break;</span><br><span class="line">            case 5:</span><br><span class="line">                player.startAnimationWithRangeDouble([&#123;location:0,length:150&#125;,&#123;location:350,length:50&#125;]);</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    releaseSvga(gift,giftLen)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//相对于1.1的版本，这次1.2的版本减少了打包之后整体的体积，但是因为是全部动画都在一个svga文件，单个的svga的文件比较大，因此load起来的速度也会慢一些。</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>关于bodymovin 跟 svga的性能，网上有分析，不过我还是觉得要自己分析一下才能下定论。</li>
+<li>由于需要本地播放，因此对我来说，svga2base64的体积比svga的体积会大25%左右，如果是bodymovin的话，一份json的体积其实还是挺小的，就是api支持不够</li>
+<li>对于android4.x的手机来说，不支持jszip，还有blob的，还得导入这两个库，这一部分的体积应该是在100kb左右，当然，这个是可以做成离线缓存的，这个又是另外一个话题了</li>
+</ol>
+<p>bodymovin，svga帮助我们解脱了看着mov写特效，然后设计师坐在旁边花费很多时间去调试到满意的结果的日子。让前端可以更注重写逻辑这块的代码。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://hanyitim.github.io/2019/01/21/AE2WEB-svga/" data-id="cjr62o1ae0003nstginai8iwi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "牙膏"
+        },
+        "headline": "AE2WEB-svga",
+        "image": "https://hanyitim.github.io/2019/01/21/AE2WEB-svga/animation-4.gif",
+        "keywords": "",
+        "genre": "",
+        "datePublished": "2019-01-21",
+        "dateCreated": "2019-01-21",
+        "dateModified": "2019-01-21",
+        "url": "https://hanyitim.github.io/2019/01/21/AE2WEB-svga/",
+        "description": "
+在实践过bodymovin之后，发现如果需要在动画里面加逻辑比较麻烦，效果也不好。因此后面找到了另外一个开源的工具，就是YY开源出来的svga,有android，ios，web版本，还有对应的AE插件，用法请看官方文档
+
+之所以选择svga：
+
+比较强大的api；
+据说性能比bodymovin好（不敢下定论，因为按照目前接触过bodymovin跟svga的情况来看，感觉如果只是纯播放，bodym"
+        "wordCount": 1439
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/01/21/AE2WEB-bodymovin/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">AE2WEB-bodymovin</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/21/AE2WEB-svga/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/01/21/AE2WEB-svga/animation-4.gif)" alt="AE2WEB-svga" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/21/AE2WEB-svga/" class="title">AE2WEB-svga</a></p>
+                            <p class="item-date"><time datetime="2019-01-21T08:31:57.000Z" itemprop="datePublished">2019-01-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/21/AE2WEB-bodymovin/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/21/AE2WEB-bodymovin/" class="title">AE2WEB-bodymovin</a></p>
+                            <p class="item-date"><time datetime="2019-01-21T08:31:34.000Z" itemprop="datePublished">2019-01-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/01/21/基于应用场景聊聊charles/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/01/21/基于应用场景聊聊charles/image-1.png)" alt="基于应用场景聊聊charles" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/01/21/基于应用场景聊聊charles/" class="title">基于应用场景聊聊charles</a></p>
+                            <p class="item-date"><time datetime="2019-01-21T03:01:18.000Z" itemprop="datePublished">2019-01-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 牙膏</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://hanyitim.github.io/2019/01/21/AE2WEB-svga/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
